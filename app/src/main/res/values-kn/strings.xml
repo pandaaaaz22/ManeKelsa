@@ -1,0 +1,84 @@
+<resources>
+    <!-- App info -->
+    <string name="app_name">ಮನೆ ಕೆಲಸ</string>
+    <string name="tagline">ನಿಮ್ಮ ನೆರೆಹೊರೆಯ ಕೆಲಸದ ಡೈರೆಕ್ಟರಿ</string>
+    <string name="worker_profile">ಕಾರ್ಮಿಕ ಪ್ರೊಫೈಲ್</string>
+
+    <!-- Availability -->
+    <string name="available">✅ ಲಭ್ಯ</string>
+    <string name="unavailable">❌ ಲಭ್ಯವಿಲ್ಲ</string>
+    <string name="available_today">ಇಂದು ಲಭ್ಯ</string>
+    <string name="available_today_hint">ಕೆಲಸಕ್ಕೆ ತಯಾರಿರುವಿರಿ ಎಂದು ತೋರಿಸಲು ಟಾಗಲ್ ಮಾಡಿ</string>
+    <string name="toggle_hint">ಎಲ್ಲರಿಗೂ ತಕ್ಷಣ ಅಪ್ಡೇಟ್ ಆಗುತ್ತದೆ</string>
+
+    <!-- Actions -->
+    <string name="call">ಕರೆ</string>
+    <string name="whatsapp">ವಾಟ್ಸ್ಆ್ಯಪ್</string>
+    <string name="save">ಉಳಿಸಿ</string>
+    <string name="saving">ಉಳಿಸಲಾಗುತ್ತಿದೆ…</string>
+    <string name="add_worker">ಕಾರ್ಮಿಕ ಸೇರಿಸಿ</string>
+    <string name="add_first_worker">ಮೊದಲ ಕಾರ್ಮಿಕ ಸೇರಿಸಿ</string>
+    <string name="select_photo">ಫೋಟೋ ಆಯ್ಕೆ ಮಾಡಿ</string>
+    <string name="thumbs_up">👍</string>
+    <string name="retry">ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ</string>
+    <string name="grant">ಅನುಮತಿ ನೀಡಿ</string>
+    <string name="cancel">ರದ್ದು ಮಾಡಿ</string>
+    <string name="yes_thumbs_up">ಹೌದು, 👍!</string>
+
+    <!-- Labels -->
+    <string name="label_skill">ಕೌಶಲ್ಯ / ಕೆಲಸದ ವಿಧ</string>
+    <string name="daily_rate">ದಿನದ ಕೂಲಿ</string>
+    <string name="phone">ಫೋನ್</string>
+    <string name="rating">ರೇಟಿಂಗ್</string>
+    <string name="profile_photo">ಪ್ರೊಫೈಲ್ ಫೋಟೋ</string>
+    <string name="location_icon">ಸ್ಥಳ</string>
+
+    <!-- Screen titles -->
+    <string name="register_worker_title">ಕಾರ್ಮಿಕ ನೋಂದಾಯಿಸಿ</string>
+
+    <!-- Hints -->
+    <string name="hint_name">ಪೂರ್ಣ ಹೆಸರು (ಉದಾ: ಲಕ್ಷ್ಮಿ ದೇವಿ)</string>
+    <string name="hint_phone">10 ಅಂಕಿಯ ಮೊಬೈಲ್ ಸಂಖ್ಯೆ</string>
+    <string name="hint_rate">ದಿನದ ಕೂಲಿ ₹ ರಲ್ಲಿ (ಉದಾ: 500)</string>
+
+    <!-- Empty / status -->
+    <string name="no_workers">ಹತ್ತಿರ ಕಾರ್ಮಿಕರು ಇಲ್ಲ.\n+ ಅದುಮಿ ಮೊದಲ ಕಾರ್ಮಿಕ ಸೇರಿಸಿ!</string>
+
+    <!-- Location strings -->
+    <string name="fetching_location">📍 ನಿಮ್ಮ ಸ್ಥಳ ಪಡೆಯಲಾಗುತ್ತಿದೆ…</string>
+    <string name="location_captured">📍 ಸ್ಥಳ ದಾಖಲಿಸಲಾಗಿದೆ ✓</string>
+    <string name="location_unavailable">📍 ಸ್ಥಳ ಲಭ್ಯವಿಲ್ಲ</string>
+    <string name="location_error">📍 ಸ್ಥಳ ದೋಷ — GPS ಪರಿಶೀಲಿಸಿ</string>
+    <string name="location_permission_denied">ಸ್ಥಳ ಪ್ರವೇಶ ತಿರಸ್ಕರಿಸಲಾಗಿದೆ. ಪಟ್ಟಿ ಹೆಸರಿನ ಮೂಲಕ ವಿಂಗಡಿಸಲಾಗಿದೆ.</string>
+    <string name="location_rationale">ಹತ್ತಿರದ ಕಾರ್ಮಿಕರನ್ನು ಮೊದಲು ತೋರಿಸಲು ಸ್ಥಳ ಅಗತ್ಯ.</string>
+
+    <!-- Validation errors -->
+    <string name="error_name">ದಯವಿಟ್ಟು ಸರಿಯಾದ ಹೆಸರು ನಮೂದಿಸಿ (ಕನಿಷ್ಠ 2 ಅಕ್ಷರ)</string>
+    <string name="error_phone">ದಯವಿಟ್ಟು 10 ಅಂಕಿಯ ಭಾರತೀಯ ಫೋನ್ ಸಂಖ್ಯೆ ನಮೂದಿಸಿ</string>
+    <string name="error_rate">ದಯವಿಟ್ಟು ಸರಿಯಾದ ದಿನದ ಕೂಲಿ ನಮೂದಿಸಿ (0 ಕ್ಕಿಂತ ಹೆಚ್ಚು)</string>
+
+    <!-- Success / info messages -->
+    <string name="worker_saved">ಕಾರ್ಮಿಕ ಯಶಸ್ವಿಯಾಗಿ ನೋಂದಾಯಿಸಲಾಗಿದೆ! 🎉</string>
+    <string name="photo_upload_failed">ಫೋಟೋ ಅಪ್‌ಲೋಡ್ ವಿಫಲ — ಫೋಟೋ ಇಲ್ಲದೆ ಉಳಿಸಲಾಗಿದೆ</string>
+    <string name="whatsapp_not_installed">ಈ ಸಾಧನದಲ್ಲಿ ವಾಟ್ಸ್ಆ್ಯಪ್ ಇಲ್ಲ</string>
+    <string name="whatsapp_greeting">ನಮಸ್ಕಾರ! ಮನೆ ಕೆಲಸದಲ್ಲಿ ನಿಮ್ಮ ಪ್ರೊಫೈಲ್ ನೋಡಿದೆ. ನೀವು ಲಭ್ಯರಿದ್ದೀರಾ?</string>
+
+    <!-- Rating dialog -->
+    <string name="rate_worker">ಕಾರ್ಮಿಕ ರೇಟ್ ಮಾಡಿ</string>
+    <string name="rate_confirmation">%1$s ಅವರಿಗೆ 👍 ನೀಡುವಿರಾ?</string>
+
+    <!-- Menu -->
+    <string name="action_refresh">ಸ್ಥಳ ರಿಫ್ರೆಶ್ ಮಾಡಿ</string>
+
+    <!-- Skills array — for spinner (Kannada) -->
+    <string-array name="skills">
+        <item>ಸ್ವಚ್ಛತೆ</item>
+        <item>ಅಡುಗೆ</item>
+        <item>ತೋಟಗಾರಿಕೆ</item>
+        <item>ಮಕ್ಕಳ ಆರೈಕೆ</item>
+        <item>ಒಗೆಯುವಿಕೆ</item>
+        <item>ವೃದ್ಧರ ಆರೈಕೆ</item>
+        <item>ಭದ್ರತೆ</item>
+        <item>ಚಾಲಕ</item>
+    </string-array>
+</resources>

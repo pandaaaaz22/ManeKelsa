@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.manekelsa">
+
+    <!-- ── Permissions ─────────────────────────────────────────────────── -->
+
+    <!-- Internet: required for Firebase Firestore, Storage, and Auth -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Fine location: GPS-based worker sorting (runtime permission) -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!-- Coarse location: fallback if fine location is denied -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- Note: CALL_PHONE is NOT needed — we use ACTION_DIAL, not ACTION_CALL -->
+    <!-- ACTION_DIAL opens the phone dialler; user manually presses Call -->
+
+    <!-- ── Application ────────────────────────────────────────────────── -->
+    <application
+        android:name=".ManeKelsaApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ManeKelsa"
+        android:usesCleartextTraffic="false">
+
+        <!-- LAUNCHER: SplashActivity is the entry point -->
+        <activity
+            android:name=".view.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.ManeKelsa.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Main worker list screen -->
+        <activity
+            android:name=".view.MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:theme="@style/Theme.ManeKelsa.NoActionBar" />
+
+        <!-- Worker registration form -->
+        <activity
+            android:name=".view.RegisterWorkerActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:theme="@style/Theme.ManeKelsa.NoActionBar" />
+
+        <!-- Worker profile detail screen -->
+        <activity
+            android:name=".view.WorkerDetailActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:theme="@style/Theme.ManeKelsa.NoActionBar" />
+
+    </application>
+
+</manifest>

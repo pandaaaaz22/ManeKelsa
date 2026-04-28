@@ -1,0 +1,84 @@
+<resources>
+    <!-- App info -->
+    <string name="app_name">Mane-Kelsa</string>
+    <string name="tagline">Your Neighbourhood Work Directory</string>
+    <string name="worker_profile">Worker Profile</string>
+
+    <!-- Availability -->
+    <string name="available">✅ Available</string>
+    <string name="unavailable">❌ Not Available</string>
+    <string name="available_today">Available Today</string>
+    <string name="available_today_hint">Toggle to show you are ready to work</string>
+    <string name="toggle_hint">Updates in real-time for everyone</string>
+
+    <!-- Actions -->
+    <string name="call">Call</string>
+    <string name="whatsapp">WhatsApp</string>
+    <string name="save">Save Worker</string>
+    <string name="saving">Saving…</string>
+    <string name="add_worker">Add Worker</string>
+    <string name="add_first_worker">Add First Worker</string>
+    <string name="select_photo">Select Photo</string>
+    <string name="thumbs_up">👍</string>
+    <string name="retry">Retry</string>
+    <string name="grant">Grant</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes_thumbs_up">Yes, 👍!</string>
+
+    <!-- Labels -->
+    <string name="label_skill">Skill / Work Type</string>
+    <string name="daily_rate">Daily Rate</string>
+    <string name="phone">Phone</string>
+    <string name="rating">Rating</string>
+    <string name="profile_photo">Profile Photo</string>
+    <string name="location_icon">Location</string>
+
+    <!-- Screen titles -->
+    <string name="register_worker_title">Register Worker</string>
+
+    <!-- Hints -->
+    <string name="hint_name">Full Name (e.g., Lakshmi Devi)</string>
+    <string name="hint_phone">10-digit mobile number</string>
+    <string name="hint_rate">Daily wage in ₹ (e.g., 500)</string>
+
+    <!-- Empty / status -->
+    <string name="no_workers">No workers found nearby.\nTap + to add the first one!</string>
+
+    <!-- Location strings -->
+    <string name="fetching_location">📍 Fetching your location…</string>
+    <string name="location_captured">📍 Location captured ✓</string>
+    <string name="location_unavailable">📍 Location unavailable</string>
+    <string name="location_error">📍 Location error — check GPS</string>
+    <string name="location_permission_denied">Location access denied. List sorted by name.</string>
+    <string name="location_rationale">Location is needed to show nearest workers first.</string>
+
+    <!-- Validation errors -->
+    <string name="error_name">Please enter a valid name (min 2 characters)</string>
+    <string name="error_phone">Please enter a valid 10-digit Indian phone number</string>
+    <string name="error_rate">Please enter a valid daily rate (must be greater than 0)</string>
+
+    <!-- Success / info messages -->
+    <string name="worker_saved">Worker registered successfully! 🎉</string>
+    <string name="photo_upload_failed">Photo upload failed — saved without photo</string>
+    <string name="whatsapp_not_installed">WhatsApp is not installed on this device</string>
+    <string name="whatsapp_greeting">Hello! I found your profile on Mane-Kelsa. Are you available?</string>
+
+    <!-- Rating dialog -->
+    <string name="rate_worker">Rate Worker</string>
+    <string name="rate_confirmation">Give a thumbs-up to %1$s?</string>
+
+    <!-- Menu -->
+    <string name="action_refresh">Refresh Location</string>
+
+    <!-- Skills array — for spinner -->
+    <string-array name="skills">
+        <item>Cleaning</item>
+        <item>Cooking</item>
+        <item>Gardening</item>
+        <item>Babysitting</item>
+        <item>Laundry</item>
+        <item>Elderly Care</item>
+        <item>Security</item>
+        <item>Driver</item>
+    </string-array>
+</resources>

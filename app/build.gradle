@@ -1,0 +1,119 @@
+// ─── app/build.gradle ────────────────────────────────────────────────────────
+// Mane-Kelsa Android App
+// Kotlin + Firebase + MVVM
+// ─────────────────────────────────────────────────────────────────────────────
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'  // Firebase services plugin
+}
+
+android {
+    namespace 'com.manekelsa'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.manekelsa"
+        minSdk 24          // Android 7.0 — covers ~95% of active devices in India
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+
+        // Support Kannada (kn) and English (en) locales
+        resConfigs "en", "kn"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true         // Enables R8 code shrinking
+            shrinkResources true       // Removes unused resource files
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
+        }
+        debug {
+            versionNameSuffix "-debug"
+            debuggable true
+        }
+    }
+
+    // Enable ViewBinding — replaces all findViewById() calls
+    buildFeatures {
+        viewBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    // Packaging options to avoid duplicate META-INF files from transitive deps
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+
+    // ── Firebase BOM — manages all Firebase library versions together ──────
+    // Using BOM means you never manually align Firebase dependency versions.
+    implementation platform('com.google.firebase:firebase-bom:32.7.0')
+
+    // Firebase Firestore — primary database for worker profiles
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+
+    // Firebase Auth — for future authentication support
+    implementation 'com.google.firebase:firebase-auth-ktx'
+
+    // Firebase Storage — for profile photo uploads
+    implementation 'com.google.firebase:firebase-storage-ktx'
+
+    // ── Google Play Services — Location ───────────────────────────────────
+    // FusedLocationProviderClient: GPS + WiFi + Cell tower fusion
+    implementation 'com.google.android.gms:play-services-location:21.1.0'
+
+    // ── AndroidX Core ─────────────────────────────────────────────────────
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.activity:activity-ktx:1.8.2'
+
+    // ── UI Components ─────────────────────────────────────────────────────
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'androidx.core:core-splashscreen:1.0.1'
+
+    // Circular ImageView — clean profile photo display
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // ── ViewModel + LiveData (Lifecycle KTX) ──────────────────────────────
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.7.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
+
+    // ── Coroutines ────────────────────────────────────────────────────────
+    // Core coroutines library
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3'
+    // Android-specific dispatchers (Dispatchers.Main)
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
+    // Coroutine support for Firebase Tasks (.await() extension)
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3'
+
+    // ── Image Loading ─────────────────────────────────────────────────────
+    // Glide: disk cache, memory cache, circle crop, cross-fade transitions
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+
+    // ── Testing ───────────────────────────────────────────────────────────
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "741253691191",
+    "project_id": "manekelsa-7760f",
+    "storage_bucket": "manekelsa-7760f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741253691191:android:0758360d00b4cdf6528cb2",
+        "android_client_info": {
+          "package_name": "com.manekelsa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxxEBMH96H97u7qh0U4YcjpAeb4aU--nY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

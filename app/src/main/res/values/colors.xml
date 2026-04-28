@@ -1,0 +1,35 @@
+<resources>
+    <!-- ── Primary Brand Colors ─────────────────────────────────────── -->
+    <!-- Deep green — authority, nature, trust -->
+    <color name="primary">#1B5E20</color>
+    <color name="primary_dark">#003300</color>
+    <color name="primary_light">#E8F5E9</color>
+
+    <!-- Amber accent — warmth, action, energy -->
+    <color name="accent">#FF6F00</color>
+    <color name="accent_light">#FFF8E1</color>
+
+    <!-- ── Semantic / Status Colors ───────────────────────────────── -->
+    <!-- Availability indicators — high contrast for outdoor viewing -->
+    <color name="available_green">#2E7D32</color>
+    <color name="unavailable_red">#C62828</color>
+
+    <!-- WhatsApp brand color -->
+    <color name="whatsapp_green">#25D366</color>
+
+    <!-- ── Surface Colors ────────────────────────────────────────── -->
+    <color name="background">#F9FBE7</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="divider">#E0E0E0</color>
+
+    <!-- ── Text Colors ───────────────────────────────────────────── -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="gray">#9E9E9E</color>
+
+    <!-- ── Switch Colors (state list drawables use these) ──────── -->
+    <color name="switch_thumb_on">#1B5E20</color>
+    <color name="switch_thumb_off">#BDBDBD</color>
+    <color name="switch_track_on">#81C784</color>
+    <color name="switch_track_off">#E0E0E0</color>
+</resources>

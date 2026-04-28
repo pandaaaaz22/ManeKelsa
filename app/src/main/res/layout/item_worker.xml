@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    item_worker.xml — Single row in the worker RecyclerView list.
+
+    Layout structure:
+    ┌──────────────────────────────────────────────────────────────┐
+    │ ● [PHOTO]  Name              ₹500/day          [CALL] [👍]  │
+    │            Cleaning          0.8 km away                    │
+    │            🟢 Available                                      │
+    └──────────────────────────────────────────────────────────────┘
+
+    Design choices for accessibility:
+     - Minimum touch target: 48dp (all buttons exceed this)
+     - High contrast: green/red status indicators with text labels
+     - Large text: 18sp for name, 15sp for supporting details
+     - CardView elevation creates clear visual separation between rows
+-->
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="6dp"
+    android:foreground="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="@color/card_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="14dp"
+        android:gravity="center_vertical">
+
+        <!-- ── Availability colour dot (left edge indicator) ── -->
+        <View
+            android:id="@+id/viewAvailabilityDot"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:background="@drawable/circle_indicator"
+            tools:backgroundTint="@color/available_green" />
+
+        <!-- ── Profile photo (circular) ── -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivWorkerPhoto"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:layout_marginStart="12dp"
+            android:src="@drawable/ic_person_placeholder"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/primary_light" />
+
+        <!-- ── Text column ── -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="8dp">
+
+            <!-- Worker name — large for readability -->
+            <TextView
+                android:id="@+id/tvWorkerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:maxLines="1"
+                android:ellipsize="end"
+                tools:text="Lakshmi Devi" />
+
+            <!-- Skill tag -->
+            <TextView
+                android:id="@+id/tvWorkerSkill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textSize="14sp"
+                android:textColor="@color/text_secondary"
+                tools:text="Cleaning" />
+
+            <!-- Daily rate in ₹ -->
+            <TextView
+                android:id="@+id/tvWorkerRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textSize="15sp"
+                android:textColor="@color/primary"
+                android:textStyle="bold"
+                tools:text="₹500/day" />
+
+            <!-- Distance from user's GPS -->
+            <TextView
+                android:id="@+id/tvDistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textSize="13sp"
+                android:textColor="@color/text_secondary"
+                tools:text="1.2 km away" />
+
+            <!-- Availability status — text + colour -->
+            <TextView
+                android:id="@+id/tvAvailabilityStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                tools:text="Available"
+                tools:textColor="@color/available_green" />
+
+        </LinearLayout>
+
+        <!-- ── Action buttons (right column) ── -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!-- Call button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCall"
+                android:layout_width="72dp"
+                android:layout_height="52dp"
+                android:text="@string/call"
+                android:textSize="13sp"
+                android:textColor="@android:color/white"
+                app:backgroundTint="@color/primary"
+                app:cornerRadius="10dp"
+                app:icon="@android:drawable/ic_menu_call"
+                app:iconSize="18dp"
+                app:iconGravity="top"
+                style="@style/Widget.MaterialComponents.Button.Icon" />
+
+            <!-- Thumbs-up rating button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnThumbsUp"
+                android:layout_width="72dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/thumbs_up"
+                android:textSize="16sp"
+                app:backgroundTint="@color/accent_light"
+                app:cornerRadius="10dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+            <!-- Rating count -->
+            <TextView
+                android:id="@+id/tvThumbsUpCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary"
+                android:gravity="center"
+                tools:text="24" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
