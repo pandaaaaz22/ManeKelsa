@@ -1,6 +1,6 @@
 # Mane-Kelsa (ಮನೆ-ಕೆಲಸ)
 
-**Mane-Kelsa** (Kannada for "Home Work") is a local-first domestic worker directory designed to bridge the gap between households and domestic workers (cleaners, cooks, gardeners, etc.) in Indian neighborhoods.
+**Mane-Kelsa** ("ಮನೆ-ಕೆಲಸ") is a local-first domestic worker directory designed to bridge the gap between households and domestic workers (cleaners, cooks, gardeners, etc.) in Indian neighborhoods.
 
 The app focuses on simplicity, trust, and real-time connectivity, allowing users to find workers near them instantly.
 
