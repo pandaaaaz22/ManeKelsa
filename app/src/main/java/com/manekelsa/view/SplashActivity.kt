@@ -5,27 +5,22 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.manekelsa.R
 import com.manekelsa.databinding.ActivitySplashBinding
+import com.manekelsa.model.UserRole
+import com.manekelsa.viewmodel.AuthViewModel
 
 /**
- * SplashActivity — Entry point shown for 1.5 seconds on app launch.
- *
- * Responsibilities:
- *  - Display app logo, name, and tagline
- *  - Brief delay for branding visibility
- *  - Navigate to MainActivity unconditionally
- *    (authentication is optional in this version — workers are public)
- *
- * The @SuppressLint annotation suppresses the "CustomSplashScreen" warning;
- * for Android 12+ devices the OS-level splash screen displays first,
- * then this screen appears for brand reinforcement.
+ * SplashActivity — Entry point shown for branding.
+ * Now checks for authentication session before navigating.
  */
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashBinding
+    private val authViewModel: AuthViewModel by viewModels()
 
     companion object {
         private const val SPLASH_DELAY_MS = 1500L
@@ -36,7 +31,16 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Animate the logo in
+        // Start animations
+        startAnimations()
+
+        // Check session after delay
+        Handler(Looper.getMainLooper()).postDelayed({
+            checkSessionAndNavigate()
+        }, SPLASH_DELAY_MS)
+    }
+
+    private fun startAnimations() {
         binding.ivLogo.alpha = 0f
         binding.ivLogo.animate().alpha(1f).setDuration(800).start()
 
@@ -45,11 +49,26 @@ class SplashActivity : AppCompatActivity() {
 
         binding.tvTagline.alpha = 0f
         binding.tvTagline.animate().alpha(1f).setDuration(800).setStartDelay(600).start()
+    }
 
-        // Navigate after delay
-        Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
-            finish() // Remove from back stack so pressing Back from Main doesn't return here
-        }, SPLASH_DELAY_MS)
+    private fun checkSessionAndNavigate() {
+        authViewModel.authState.observe(this) { state ->
+            when (state) {
+                is AuthViewModel.AuthState.Authenticated -> {
+                    if (state.user.role == UserRole.WORKER) {
+                        startActivity(Intent(this, RegisterWorkerActivity::class.java))
+                    } else {
+                        startActivity(Intent(this, MainActivity::class.java))
+                    }
+                    finish()
+                }
+                is AuthViewModel.AuthState.Idle -> {
+                    startActivity(Intent(this, LoginActivity::class.java))
+                    finish()
+                }
+                else -> Unit
+            }
+        }
+        authViewModel.checkUserSession()
     }
 }

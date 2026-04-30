@@ -18,6 +18,7 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
 import com.google.android.gms.tasks.CancellationTokenSource
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 import com.manekelsa.R
 import com.manekelsa.databinding.ActivityRegisterWorkerBinding
@@ -29,14 +30,7 @@ import com.manekelsa.utils.toast
 import com.manekelsa.viewmodel.WorkerViewModel
 
 /**
- * RegisterWorkerActivity — Screen for adding a new domestic worker profile.
- *
- * Flow:
- *  1. User fills Name, Skill (spinner), Phone, Daily Rate
- *  2. Optionally selects a profile photo from gallery
- *  3. Availability toggle sets initial isAvailable flag
- *  4. On Save: validate → fetch GPS → upload photo → save to Firestore
- *  5. On Success: finish() returns to MainActivity (which auto-refreshes via Firestore listener)
+ * RegisterWorkerActivity — Screen for workers to manage their professional profile.
  */
 class RegisterWorkerActivity : AppCompatActivity() {
 
@@ -47,11 +41,6 @@ class RegisterWorkerActivity : AppCompatActivity() {
     private var workerLatitude: Double = 0.0
     private var workerLongitude: Double = 0.0
     private var selectedPhotoUri: Uri? = null
-    private var uploadedPhotoUrl: String = ""
-
-    // ─────────────────────────────────────────────────────────────────────────
-    // Activity result launchers
-    // ─────────────────────────────────────────────────────────────────────────
 
     /** Opens the photo gallery and receives the selected image URI */
     private val galleryLauncher = registerForActivityResult(
@@ -73,17 +62,32 @@ class RegisterWorkerActivity : AppCompatActivity() {
         if (isGranted) fetchWorkerLocation()
         else toast(getString(R.string.location_permission_denied))
     }
+    
+    // Add logout functionality for workers
+    override fun onCreateOptionsMenu(menu: android.view.Menu): Boolean {
+        menu.add(0, 100, 0, "Logout")
+        return true
+    }
 
-    // ─────────────────────────────────────────────────────────────────────────
-    // Lifecycle
-    // ─────────────────────────────────────────────────────────────────────────
+    override fun onOptionsItemSelected(item: android.view.MenuItem): Boolean {
+        if (item.itemId == 100) {
+            FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterWorkerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // For workers, we don't show the back button since this is their home screen
         setupToolbar()
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+
         setupSkillSpinner()
         setupClickListeners()
         observeViewModel()
@@ -224,7 +228,8 @@ class RegisterWorkerActivity : AppCompatActivity() {
             photoUrl = photoUrl,
             isAvailable = binding.switchAvailable.isChecked,
             latitude = workerLatitude,
-            longitude = workerLongitude
+            longitude = workerLongitude,
+            userId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
         )
         viewModel.addWorker(worker)
     }
@@ -277,7 +282,7 @@ class RegisterWorkerActivity : AppCompatActivity() {
                     showLoading(false)
                     toast(state.message)
                     viewModel.resetUiState()
-                    finish() // Return to MainActivity — list auto-updates via Firestore listener
+                    // Don't finish() here if it's the home screen for workers
                 }
 
                 is WorkerViewModel.UiState.Error -> {

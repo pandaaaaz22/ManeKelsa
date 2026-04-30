@@ -38,6 +38,12 @@
             </intent-filter>
         </activity>
 
+        <!-- Login Screen -->
+        <activity
+            android:name=".view.LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ManeKelsa.NoActionBar" />
+
         <!-- Main worker list screen -->
         <activity
             android:name=".view.MainActivity"

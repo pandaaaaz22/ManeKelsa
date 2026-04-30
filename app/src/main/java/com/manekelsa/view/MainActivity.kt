@@ -40,6 +40,8 @@ import com.manekelsa.viewmodel.WorkerViewModel
  * Architecture role: THIN VIEW — no business logic here.
  * All data transformation happens in [WorkerViewModel].
  */
+import com.manekelsa.viewmodel.AuthViewModel
+
 class MainActivity : AppCompatActivity() {
 
     // ViewBinding — generated class from activity_main.xml
@@ -47,6 +49,7 @@ class MainActivity : AppCompatActivity() {
 
     // ViewModel — survives configuration changes (screen rotation)
     private val viewModel: WorkerViewModel by viewModels()
+    private val authViewModel: AuthViewModel by viewModels()
 
     // RecyclerView adapter
     private lateinit var adapter: WorkerAdapter
@@ -113,6 +116,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupFab() {
+        // Hide FAB for clients (as they shouldn't be adding workers)
+        binding.fabAddWorker.isVisible = false
+
         binding.fabAddWorker.setOnClickListener {
             startActivity(Intent(this, RegisterWorkerActivity::class.java))
         }
@@ -246,6 +252,12 @@ class MainActivity : AppCompatActivity() {
             R.id.action_refresh -> {
                 // Firestore real-time listener auto-refreshes — this just re-fetches location
                 checkAndRequestLocationPermission()
+                true
+            }
+            R.id.action_logout -> {
+                authViewModel.logout()
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
                 true
             }
             else -> super.onOptionsItemSelected(item)

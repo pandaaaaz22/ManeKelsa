@@ -48,6 +48,10 @@ data class Worker(
     @get:PropertyName("thumbsUp")
     @set:PropertyName("thumbsUp")
     var thumbsUp: Long = 0L,
+
+    @get:PropertyName("userId")
+    @set:PropertyName("userId")
+    var userId: String = "",
     
     @get:PropertyName("createdAt")
     @set:PropertyName("createdAt")

@@ -6,4 +6,8 @@
         android:icon="@android:drawable/ic_menu_mylocation"
         android:title="@string/action_refresh"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_logout"
+        android:title="Logout"
+        app:showAsAction="never" />
 </menu>
